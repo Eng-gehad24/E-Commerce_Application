@@ -27,7 +27,7 @@ export default function App() {
     if(localStorage.getItem("token")){
       setToken(localStorage.getItem("token"))
     }
-  }, [])
+  }, [setToken])
   let routes =  createBrowserRouter([
     {
       path:"",
