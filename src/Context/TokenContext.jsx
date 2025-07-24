@@ -19,7 +19,7 @@ useEffect(() => {
             setUserToken(name)
         }
     }
-}, [])
+}, [getToken,setDecodeToken,setUserToken])
 
  return <tokenContext.Provider value={{token, setToken,decodeToken,userToken}}>
  {props.children}
