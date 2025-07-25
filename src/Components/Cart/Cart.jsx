@@ -44,7 +44,7 @@ export default function Cart() {
     
         const data = await getCartItems();
         setIsLoading(false)
-        if(data?.data.status == "success"){
+        if(data?.data.status === "success"){
           setFinallyTotal(data?.data.data.totalCartPrice)
           setNumberOfItems(data?.data.numOfCartItems)
       setShowCartItems(data?.data.data.products)
