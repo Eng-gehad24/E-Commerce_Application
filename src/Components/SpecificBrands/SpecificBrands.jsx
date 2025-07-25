@@ -17,7 +17,7 @@ export default function SpecificBrands() {
   }
   useEffect(()=>{
     SpecificBrands(id)
-  },[])
+  },[ SpecificBrands])
   return (
     <>
     {isLoading? <div className='loading d-flex align-items-center justify-content-center'>
