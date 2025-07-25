@@ -1,4 +1,4 @@
-import React,{useState, useEffect, useContext} from 'react'
+import React,{useState, useEffect, useContext,useCallback } from 'react'
 import axios from 'axios';
 import { Triangle } from 'react-loader-spinner'
 import { tokenContext } from '../../Context/TokenContext';
@@ -6,20 +6,21 @@ export default function AllOrders() {
   const [owner, setOwner] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const {decodeToken} = useContext( tokenContext)
-  async function getOrders(){
-    try {
-        const data = await axios.get(`https://ecommerce.routemisr.com/api/v1/orders/user/${decodeToken}`,{
-            headers: {
-                token: localStorage.getItem('token')
-            }
-        });
-          console.log(data.data)
-          setOwner(data.data)
-          setIsLoading(false)
-    } catch (err) {
-        console.log(err);
-    }
-}
+const getOrders = useCallback(async () => {
+  try {
+    const data = await axios.get(`https://ecommerce.routemisr.com/api/v1/orders/user/${decodeToken}`, {
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    });
+    console.log(data.data)
+    setOwner(data.data)
+    setIsLoading(false)
+  } catch (err) {
+    console.log(err);
+  }
+}, [decodeToken]); // decodeToken هو dependency الوحيد هنا
+
 useEffect(() => {
   getOrders()
 }, [getOrders])
