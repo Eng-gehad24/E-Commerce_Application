@@ -21,7 +21,7 @@ export default function SpecifCategory() {
   useEffect(()=>{
     SpecificCategories(id)
     SubAllSpecificCategories(id)
-  },[])
+  },[SpecificCategories,SubAllSpecificCategories])
   return (
     
     <>
