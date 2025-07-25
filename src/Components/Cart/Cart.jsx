@@ -55,7 +55,7 @@ export default function Cart() {
 }
 useEffect(() => {
   cartItems()
-}, [])
+}, [cartItems])
 
   return (
     <>
