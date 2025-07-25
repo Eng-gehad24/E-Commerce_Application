@@ -98,7 +98,7 @@ async function getFavourItems(){
 
 useEffect(()=>{
     getFavourItems()
-}, [getFavourItems(])
+}, [getFavourItems])
 
 
 function successMessage(data){
