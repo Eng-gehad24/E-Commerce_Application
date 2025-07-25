@@ -51,7 +51,7 @@ async function getCartItems(){
 }
 useEffect(() => {
     getCartItems()
-}, [])
+}, [getCartItems])
 
 
 async function AddToFavourite(id){
@@ -98,7 +98,7 @@ async function getFavourItems(){
 
 useEffect(()=>{
     getFavourItems()
-}, [])
+}, [getFavourItems(])
 
 
 function successMessage(data){
