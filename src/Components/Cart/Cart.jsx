@@ -1,4 +1,4 @@
-import React,{ useContext, useState, useEffect} from 'react'
+import React,{ useContext, useState, useEffect,useCallback } from 'react'
 import axios from 'axios';
 import { Triangle } from 'react-loader-spinner'
 import { cartContext } from '../../Context/CartContext'
@@ -40,17 +40,19 @@ export default function Cart() {
         }
 }
 
-  async function cartItems(){
-    
-        const data = await getCartItems();
-        setIsLoading(false)
-        if(data?.data.status === "success"){
-          setFinallyTotal(data?.data.data.totalCartPrice)
-          setNumberOfItems(data?.data.numOfCartItems)
-      setShowCartItems(data?.data.data.products)
-    }else{
-      setNumberOfItems(0)
-    }
+const cartItems = useCallback(async () => {
+  const data = await getCartItems();
+  setIsLoading(false);
+
+  if (data?.data.status === "success") {
+    setFinallyTotal(data?.data.data.totalCartPrice);
+    setNumberOfItems(data?.data.numOfCartItems);
+    setShowCartItems(data?.data.data.products);
+  } else {
+    setNumberOfItems(0);
+  }
+}, [getCartItems, setShowCartItems]);
+
        
 }
 useEffect(() => {
