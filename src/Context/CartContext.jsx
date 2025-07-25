@@ -86,7 +86,7 @@ async function getFavourItems(){
         setLoad(data.data)
         const response = data.data.data;
         const id = response.map(item => item.id);
-        if(data.data.status == "success"){
+        if(data.data.status === "success"){
             setColor(...color,id)
         }
         setCountOfFavourItems(data.data.count)
