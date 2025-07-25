@@ -22,7 +22,7 @@ export default function AllOrders() {
 }
 useEffect(() => {
   getOrders()
-}, [])
+}, [getOrders])
 
   return (
     <>
