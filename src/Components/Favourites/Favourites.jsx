@@ -43,7 +43,7 @@ export default function Favourites() {
 }
 useEffect(() => {
   favouriteItems()
-}, [])
+}, [favouriteItems])
 
   return (
     <>
